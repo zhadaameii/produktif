@@ -1,7 +1,6 @@
 package com.manage;
 
 import com.barcodelib.barcode.Linear;
-import com.barcodelib.barcode.Linear;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
 import com.google.zxing.FormatException;
@@ -9,29 +8,25 @@ import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Reader;
-import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import java.awt.image.BufferedImage;
+import java.io.*;
 //import java.io.FileInputStream;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
 //import java.io.InputStream;
 import javax.imageio.ImageIO;
-//import java.io.File;
-//import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import org.apache.commons.io.FilenameUtils;
-import java.io.*;
 
 /**
  *
- * @author Amirzan Fikri P
+ * @author Windows Amirzan Fikri Prasetyo
  */
-public class Barcode {
+public class QRCode {
 
     private final FileManager fManage = new FileManager();
 
-    public boolean createBar(String data) {
+    public boolean createQr(String data) {
         try {
             String path = System.getProperty("user.dir");
             Linear barcode = new Linear();
@@ -50,7 +45,7 @@ public class Barcode {
         return false;
     }
 
-    public String scanBar(String data) throws Exception {
+    public String scanQr(String data) throws Exception {
         try {
             String dir = System.getProperty("user.dir");
             File path = new File(dir + "\\barcode\\");
@@ -59,9 +54,9 @@ public class Barcode {
             BufferedImage barBufferedImage = ImageIO.read(barInputStream);
             barInputStream.close();
             if(fManage.deleteFile(gambar.toString())){
-//                System.out.println("barcode dihapus");
+                System.out.println("qr code dihapus");   
             }else{
-                System.out.println("barcode tidak bisa dihapus");
+                System.out.println("qr code tidak bisa dihapus");   
             }
             LuminanceSource source = new BufferedImageLuminanceSource(barBufferedImage);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -72,9 +67,9 @@ public class Barcode {
             e.printStackTrace();
             Message.showException(this, "Terjadi Kesalahan!\n\nError message : " + e.getMessage(), e, true);
         } catch (NullPointerException n) {
-            Message.showException(this, "Terjadi Kesalahan!\n\nBarcode tidak ditemukan", n, true);
+            Message.showException(this, "Terjadi Kesalahan!\n\nQR Code tidak ditemukan", n, true);
             n.printStackTrace();
-            System.out.println("error barcode");
+            System.out.println("error qr code");
         }
         return "";
     }
