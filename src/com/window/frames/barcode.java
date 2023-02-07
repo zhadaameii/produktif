@@ -1,6 +1,7 @@
 package com.window.frames;
 
 import com.manage.Barcode;
+import com.media.Gambar;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.logging.Level;
@@ -11,18 +12,10 @@ import java.util.logging.Logger;
  * @author Amirzan Fikri Prasetyo
  */
 public class barcode extends javax.swing.JFrame {
-    
     private final Barcode barcode = new Barcode();
 
     public barcode() {
         initComponents();
-//        String userDirectoryPath = System.getProperty("user.dir");
-//        System.out.println("Current Directory = \"" + userDirectoryPath + "\"");
-//        jLabel1.setText(userDirectoryPath);
-//        Path currentDirectoryPath = FileSystems.getDefault().getPath("");
-//        String currentDirectoryName = currentDirectoryPath.toAbsolutePath().toString();
-//        System.out.println("Current Directory = \"" + currentDirectoryName + "\"");
-//        jLabel2.setText(currentDirectoryName);
     }
 
     /**
@@ -42,6 +35,7 @@ public class barcode extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,13 +100,19 @@ public class barcode extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(231, 231, 231))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel4)
+                        .addGap(47, 47, 47)
                         .addComponent(create))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
@@ -152,7 +152,8 @@ public class barcode extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
-        barcode.createBar(jTextField1.getText());
+        String path = barcode.createBar(jTextField1.getText());
+        jLabel4.setIcon(Gambar.getBarcode(path));
     }//GEN-LAST:event_createActionPerformed
 
     private void scanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanActionPerformed
@@ -212,6 +213,7 @@ public class barcode extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

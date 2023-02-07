@@ -24,6 +24,8 @@ public class Gambar {
     private static final ImageIcon icWindow_old = Application.getWindowIcon_old();
     private static final ImageIcon icWindow = Application.getWindowIcon();
     
+    private static final String BARCODE = "src\\barcode\\";
+    private static final String QRCODE = "src\\qr code\\";
     private static final String DIREKTORY_ICONS = "src\\resources\\image\\icons\\";
     private static final String DIREKTORY_ICON = "src\\resources\\image\\gambar_icon\\";
     private static final String ukuran = "075";
@@ -45,7 +47,26 @@ public class Gambar {
     
     public static ImageIcon getIcon(final String icon){
         File file = new File(Gambar.DIREKTORY_ICONS + icon);
-        
+        // mengecek apakah file icon ada atau tidak
+        if(file.exists()){
+            return new ImageIcon(file.toString());
+        }else{
+            JOptionPane.showMessageDialog(null, "Tidak dapat menemukan file '" + icon + "'", "Warning", JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
+    }
+    public static ImageIcon getBarcode(String icon){
+        File file = new File(Gambar.BARCODE + icon);
+        // mengecek apakah file icon ada atau tidak
+        if(file.exists()){
+            return new ImageIcon(file.toString());
+        }else{
+            JOptionPane.showMessageDialog(null, "Tidak dapat menemukan file '" + icon + "'", "Warning", JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
+    }
+    public static ImageIcon getQrcode(String icon){
+        File file = new File(Gambar.QRCODE + icon);
         // mengecek apakah file icon ada atau tidak
         if(file.exists()){
             return new ImageIcon(file.toString());

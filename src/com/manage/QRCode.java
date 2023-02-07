@@ -34,7 +34,7 @@ public class QRCode {
             barcode.setData(data);
             barcode.setI(11.0f);
             String fname = data;
-            if (barcode.renderBarcode(path + "\\barcode\\" + data + ".png")) {
+            if (barcode.renderBarcode(path + "\\src\\qr code\\" + data + ".png")) {
                 return true;
             } else {
                 return false;
@@ -48,7 +48,7 @@ public class QRCode {
     public String scanQr(String data) throws Exception {
         try {
             String dir = System.getProperty("user.dir");
-            File path = new File(dir + "\\barcode\\");
+            File path = new File(dir + "\\src\\qr code\\");
             File gambar = fManage.getImage(path, data);
             InputStream barInputStream = new FileInputStream(gambar);
             BufferedImage barBufferedImage = ImageIO.read(barInputStream);

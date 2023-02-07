@@ -31,7 +31,7 @@ public class Barcode {
 
     private final FileManager fManage = new FileManager();
 
-    public boolean createBar(String data) {
+    public String createBar(String data) {
         try {
             String path = System.getProperty("user.dir");
             Linear barcode = new Linear();
@@ -39,21 +39,21 @@ public class Barcode {
             barcode.setData(data);
             barcode.setI(11.0f);
             String fname = data;
-            if (barcode.renderBarcode(path + "\\barcode\\" + data + ".png")) {
-                return true;
+            if (barcode.renderBarcode(path + "\\src\\barcode\\" + data + ".png")) {
+                return data+".png";
             } else {
-                return false;
+                return "";
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return false;
+        return "";
     }
 
     public String scanBar(String data) throws Exception {
         try {
             String dir = System.getProperty("user.dir");
-            File path = new File(dir + "\\barcode\\");
+            File path = new File(dir + "\\src\\barcode\\");
             File gambar = fManage.getImage(path, data);
             InputStream barInputStream = new FileInputStream(gambar);
             BufferedImage barBufferedImage = ImageIO.read(barInputStream);
@@ -62,6 +62,7 @@ public class Barcode {
 //                System.out.println("barcode dihapus");
             }else{
                 System.out.println("barcode tidak bisa dihapus");
+                throw new Exception("Barcode tidak bisa dihapus");
             }
             LuminanceSource source = new BufferedImageLuminanceSource(barBufferedImage);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
