@@ -524,7 +524,6 @@ public class FileManager {
             });
             if (matchingFiles != null) {
                 for (File f : matchingFiles) {
-//                    System.out.println("hasil : " + f.getAbsoluteFile());
                     return f;
                 }
             } else {

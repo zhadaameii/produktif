@@ -80,11 +80,9 @@ public class Gambar {
         return new File(
                 new FileManager().chooseFile(System.getProperty("user.home")+"\\Desktop\\", (1023*1024)*3, ".IMAGES", "jpg", "jpeg", "png", "gif")
         );
-        
     }
     
     public static File resizeImage(File imgFile, int width, int height, String newName){
-        
         BufferedImage fileOri, resize;
         Graphics2D g2d;
         File newImg;
